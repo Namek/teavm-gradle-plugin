@@ -40,6 +40,7 @@ open class TeaVMTask : DefaultTask() {
     var generateSourceMap: Boolean = false
     var minified: Boolean = true
     var runtime: RuntimeCopyOperation = RuntimeCopyOperation.SEPARATE
+    var customProperties = Properties()
 
     val log by lazy { TeaVMLoggerGlue(project.logger) }
 
@@ -49,6 +50,7 @@ open class TeaVMTask : DefaultTask() {
 
         tool.targetDirectory = File(installDirectory)
         tool.targetFileName = targetFileName
+        customProperties.forEach({ key, value -> tool.properties.set(key, value) })
 
         if (project.hasProperty("mainClassName") && project.property("mainClassName") != null) {
             tool.mainClass = "${project.property("mainClassName")}"
