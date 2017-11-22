@@ -1,5 +1,9 @@
 group 'com.edibleday'
 
+ext {
+    teavmVersion = '0.5.1'
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -24,8 +28,8 @@ repositories {
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'org.teavm:teavm-core:0.4.3'
-    compile 'org.teavm:teavm-tooling:0.4.3'
+    compile "org.teavm:teavm-core:${teavmVersion}"
+    compile "org.teavm:teavm-tooling:${teavmVersion}"
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.1-2'
     compile 'org.apache.maven:maven-plugin-api:3.3.3'
 }
