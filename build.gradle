@@ -1,7 +1,8 @@
 group "com.edibleday"
 
 ext {
-    teavmVersion = '0.5.1'
+    //teavmVersion = '0.5.1'
+    teavmVersion = 'master-SNAPSHOT'
 }
 
 buildscript {
@@ -21,17 +22,20 @@ buildscript {
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 
-version = '0.4.3.4-SNAPSHOT'
+version = '0.4.4-SNAPSHOT'
 
 repositories {
+    maven { url 'https://jitpack.io' }
     mavenCentral()
 }
 
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile "org.teavm:teavm-core:${teavmVersion}"
-    compile "org.teavm:teavm-tooling:${teavmVersion}"
+    compile "com.github.konsoletyper.teavm:teavm-core:${teavmVersion}"
+    compile "com.github.konsoletyper.teavm:teavm-tooling:${teavmVersion}"
+    //compile "org.teavm:teavm-core:${teavmVersion}"
+    //compile "org.teavm:teavm-tooling:${teavmVersion}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'org.apache.maven:maven-plugin-api:3.3.3'
 }
